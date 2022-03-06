@@ -1,16 +1,17 @@
 import {useEffect, useState} from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import useRequest from "hooks/useRequest";
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/bundle';
+import Seller from "components/Seller";
 
 function Sellers() {
-  const sellers = useRequest(getSellers);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  function getSellers(){
-    const data = {
+  useEffect(() => {
+    const searchParamsData = {
       "rows": 10,
       "fullname": "{firstName}~{lastName}",
       "verification": "{bool}",
@@ -18,44 +19,21 @@ function Sellers() {
       "amount": "{decimal|20}"
     };
 
-    const searchParams = new URLSearchParams(data);
-    return axios.get('http://filltext.com/?'+searchParams);
-  }
+    const searchParams = new URLSearchParams(searchParamsData);
+    axios.get('http://filltext.com/?'+searchParams)
+        .then(response => setData(response.data))
+        .catch(error => setError(error))
+        .finally(() => setLoading(false));
+  }, []);
 
-  function elSlider() {
-    if (sellers.data === null || typeof sellers.data !== "object") return;
-
-    return sellers.data.map((seller, index) => {
-      const key = seller.fullname + index;
-      const count = index + 1;
-      const jpg = `img/avatar/${index + 1}.jpg`;
-      const webp = `img/avatar/${index + 1}.webp`;
-      const to = "/user/"+ (index + 1);
-
-      return (
-        <SwiperSlide key={key}>
-          <Link to={to} className="home-slider__item">
-              <div className="home-slider__count">{count}</div>
-              <div className="home-slider__img">
-                <picture>
-                  <source srcSet={webp} type="image/webp" />
-                  <source srcSet={jpg} type="image/jpg" />
-                  <img src={jpg} alt={seller.fullname} />
-                </picture>
-                <span className={seller.verification ? "active" : ""}>
-                  <svg><use href="img/sprite.svg#check"></use></svg>
-                </span>
-              </div>
-              <div className="home-slider__name">{seller.fullname}</div>
-              <div className="home-slider__price">{seller.amount.toFixed(2)} <span>ETH</span></div>
-          </Link>
-        </SwiperSlide>
-      );
-    });
-  }
+  const dataSellers = data.map((seller, index) => (
+    <SwiperSlide key={index}>
+      <Seller data={seller} index={index}/>
+    </SwiperSlide>
+  ));
 
   return (
-    <div className={sellers.loading ? "home-slider loading" : "home-slider"} >
+    <div className={loading ? "home-slider loading" : "home-slider"} >
       <Swiper
         modules={[Navigation]}
         slidesPerView={1}
@@ -74,7 +52,7 @@ function Sellers() {
           prevEl: '.swiper-button-prev',
         }}
       >
-        {elSlider()}
+        {dataSellers}
       </Swiper>
       <div className="home-slider__nav">
         <svg className="swiper-button-prev">

@@ -1,13 +1,18 @@
 import {useEffect, useState} from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import useRequest from "hooks/useRequest";
+import { Link } from "react-router-dom";
+import Bid from "components/Bid";
 
 function Bids() {
-  const bids = useRequest(getBids);
+  const [more, setMore] = useState(true);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  function getBids(){
-    const data = {
+  useEffect(() => {
+    if (!more) return;
+
+    const searchParamsData = {
       "rows": 8,
       "title": "{lorem}",
       "like": "{number|1000}",
@@ -16,51 +21,28 @@ function Bids() {
       "amount": "{decimal|20}"
     };
 
-    const searchParams = new URLSearchParams(data);
-    return axios.get('http://filltext.com/?'+searchParams);
-  }
+    const searchParams = new URLSearchParams(searchParamsData);
+    setLoading(true);
+    axios.get('http://filltext.com/?'+searchParams)
+        .then(response => setData(data.concat(response.data)))
+        .catch(error => setError(error))
+        .finally(() => setLoading(false));
 
-  function elBid() {
-    if (bids.data === null || typeof bids.data !== "object") return;
+    setMore(false);
+  }, [more]);
 
-    return bids.data.map((bid, index) => {
-      const key = bid.title + index;
-      const to = "/bid/"+ (index + 1);
-      const jpg = `img/product/product_${index + 1}_small.jpg`;
-      const webp = `img/product/product_${index + 1}_small.webp`;
-
-      return (
-        <Link to={to} key={key} className="item-list__item">
-          <picture>
-            <source srcSet={webp} type="image/webp" />
-            <source srcSet={jpg} type="image/jpg" />
-            <img src={jpg} alt={bid.title} />
-          </picture>
-
-          <h3>{bid.title}</h3>
-          <div className="item-list__details">
-            <div className="item-list__price">
-              {bid.amount.toFixed(2)}
-              <span>ETH</span>
-            </div>
-            <div className={bid.likeStatus ? "item-list__like active" : "item-list__like"}>
-              <svg><use href="img/sprite.svg#heart"></use></svg>
-              <span>{bid.like}</span>
-            </div>
-          </div>
-        </Link>
-      )
-    });
-  }
+  const dataBid = data.map((bid, index) => (
+    <Bid key={bid.title + index} data={bid} index={index}/>
+  ));
 
   return (
     <>
-      <div className={bids.loading ? "item-list loading" : "item-list"}>
-        {elBid()}
+      <div className={ loading ? "item-list loading" : "item-list" }>
+        {dataBid}
       </div>
 
       <div className="item-list-loading">
-        <button className="btn btn--transparent"><span>Load More</span></button>
+        <button disabled={data.length >= 16} className="btn btn--transparent" onClick={() => setMore(true)} ><span>Load More</span></button>
       </div>
     </>
   )
