@@ -37,14 +37,13 @@ function Sellers() {
       <Swiper
         modules={[Navigation]}
         slidesPerView={1}
+        spaceBetween={20}
         breakpoints={{
           667: {
-            slidesPerView: 2,
-            spaceBetween: 20
+            slidesPerView: 2
           },
           992: {
-            slidesPerView: 5,
-            spaceBetween: 20
+            slidesPerView: 5
           }
         }}
         navigation={{
