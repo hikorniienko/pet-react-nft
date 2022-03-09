@@ -15,8 +15,8 @@ function HeaderNav() {
   return (
     <nav className={nav ? "nav active" : "nav"}>
       <header className="nav__header" onClick={() => setNav(!nav)}>
-        <svg><use href="img/sprite.svg#menu"></use></svg>
-        <svg><use href="img/sprite.svg#close"></use></svg>
+        <svg><use href="/img/sprite.svg#menu"></use></svg>
+        <svg><use href="/img/sprite.svg#close"></use></svg>
       </header>
       <ul className="nav__menu">
         <li><Link to="/" className="active">Explore</Link></li>

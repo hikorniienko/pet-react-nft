@@ -7,7 +7,7 @@ function Footer() {
         <div className="container">
           <div className="footer__group">
             <div className="footer-logo">
-              <object type="image/svg+xml" data="img/logo.svg"></object>
+              <object type="image/svg+xml" data="/img/logo.svg"></object>
               <span>CryptoNFT</span>
             </div>
 
@@ -48,10 +48,10 @@ function Footer() {
           </div>
 
           <ul className="footer-social">
-            <li><Link to="/"><svg><use href="img/sprite.svg#instagram"></use></svg></Link></li>
-            <li><Link to="/"><svg><use href="img/sprite.svg#twitter"></use></svg></Link></li>
-            <li><Link to="/"><svg><use href="img/sprite.svg#telegram"></use></svg></Link></li>
-            <li><Link to="/"><svg><use href="img/sprite.svg#discord"></use></svg></Link></li>
+            <li><Link to="/"><svg><use href="/img/sprite.svg#instagram"></use></svg></Link></li>
+            <li><Link to="/"><svg><use href="/img/sprite.svg#twitter"></use></svg></Link></li>
+            <li><Link to="/"><svg><use href="/img/sprite.svg#telegram"></use></svg></Link></li>
+            <li><Link to="/"><svg><use href="/img/sprite.svg#discord"></use></svg></Link></li>
           </ul>
         </div>
       </footer>

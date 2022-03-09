@@ -6,19 +6,19 @@ import Bid from "components/Bid";
 function Bids() {
   const [more, setMore] = useState(true);
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (!more) return;
 
     const searchParamsData = {
-      "rows": 8,
-      "title": "{lorem}",
-      "like": "{number|1000}",
-      "likeStatus": "{bool}",
-      "id": "{numberRange|1, 16}",
-      "amount": "{decimal|20}"
+      rows: 8,
+      title: "{lorem}",
+      like: "{number|1000}",
+      likeStatus: "{bool}",
+      id: "{numberRange|1, 16}",
+      amount: "{decimal|20}"
     };
 
     const searchParams = new URLSearchParams(searchParamsData);
@@ -35,9 +35,13 @@ function Bids() {
     <Bid key={bid.title + index} data={bid} index={index}/>
   ));
 
+  if (loading) {
+    return (<div className="loading"></div>)
+  }
+
   return (
     <>
-      <div className={ loading ? "item-list loading" : "item-list" }>
+      <div className="item-list">
         {dataBid}
       </div>
 
