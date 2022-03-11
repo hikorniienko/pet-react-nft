@@ -12,11 +12,9 @@ function User() {
   const [error, setError] = useState('');
 
   const [search, setSearch] = useState('');
-  const [searchTo, setSearchTo] = useState('');
 
-  const debounseSearch = useDebounce(debounseSetSearchTo, 500);
+  const debounseSearch = useDebounce(debounseSetSearch, 500);
 
-  // console.log(search)
   useEffect(() => {
     const searchParamsData = {
       rows: 1,
@@ -34,12 +32,11 @@ function User() {
   }, []);
 
   function onChangeSearch(event){
-    setSearch(event.target.value);
     debounseSearch(event.target.value);
   }
 
-  function debounseSetSearchTo(value) {
-    setSearchTo(value);
+  function debounseSetSearch(value) {
+    setSearch(value);
   }
 
   if (data.length == 0) {
@@ -77,7 +74,7 @@ function User() {
       <div className="item-list-nav container">
         <form className="search">
           <svg><use href="/img/sprite.svg#search"></use></svg>
-          <input type="text" placeholder="Search item Here" value={search} onChange={onChangeSearch} />
+          <input type="text" placeholder="Search item Here" onChange={onChangeSearch} />
         </form>
 
         <form className="select">
@@ -90,7 +87,7 @@ function User() {
       </div>
 
       <div className="container">
-        <UserBids search={searchTo}/>
+        <UserBids search={search}/>
       </div>
     </>
   )

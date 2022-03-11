@@ -35,6 +35,10 @@ function Bids() {
     <Bid key={bid.title + index} data={bid} index={index}/>
   ));
 
+  const buttonMore = (
+      <button disabled={data.length >= 16} className="btn btn--transparent" onClick={() => setMore(true)} ><span>Load More</span></button>
+  );
+
   if (loading) {
     return (<div className="loading"></div>)
   }
@@ -46,7 +50,7 @@ function Bids() {
       </div>
 
       <div className="item-list-loading">
-        <button disabled={data.length >= 16} className="btn btn--transparent" onClick={() => setMore(true)} ><span>Load More</span></button>
+        {data.length >= 8 && buttonMore}
       </div>
     </>
   )
