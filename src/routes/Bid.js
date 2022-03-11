@@ -46,8 +46,8 @@ function Bid() {
 
   const jpg = `/img/product/product_${data.id}.jpg`;
   const webp = `/img/product/product_${data.id}.webp`;
-  const authorJpg = `/img/avatar/${data.id}.jpg`;
-  const authorWebp = `/img/avatar/${data.id}.webp`;
+  const authorJpg = `/img/avatar/${data.authorId}.jpg`;
+  const authorWebp = `/img/avatar/${data.authorId}.webp`;
   const authorTo = `/user/${data.authorId}`;
 
   function eventLike(event) {
