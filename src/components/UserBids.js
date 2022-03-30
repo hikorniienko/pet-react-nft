@@ -23,7 +23,7 @@ function UserBids(props) {
 
     const searchParams = new URLSearchParams(searchParamsData);
     setLoading(true);
-    axios.get('http://filltext.com/?'+searchParams)
+    axios.get('https://filltext.com/?'+searchParams)
         .then(response => setData(data.concat(response.data)))
         .catch(error => setError(error))
         .finally(() => setLoading(false));
@@ -32,7 +32,6 @@ function UserBids(props) {
   }, [more]);
 
   useEffect(() => {
-    console.log(props.search);
     if (props.search === "") {
       setMore(true);
       return;
@@ -49,7 +48,7 @@ function UserBids(props) {
 
     const searchParams = new URLSearchParams(searchParamsData);
     setLoading(true);
-    axios.get('http://filltext.com/?'+searchParams)
+    axios.get('https://filltext.com/?'+searchParams)
         .then(response => setData(response.data))
         .catch(error => setError(error))
         .finally(() => setLoading(false));

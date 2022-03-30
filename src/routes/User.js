@@ -25,7 +25,7 @@ function User() {
 
     const searchParams = new URLSearchParams(searchParamsData);
     setLoading(true);
-    axios.get('http://filltext.com/?'+searchParams)
+    axios.get('https://filltext.com/?'+searchParams)
         .then(response => setData(response.data[0]))
         .catch(error => setError(error))
         .finally(() => setLoading(false));
@@ -47,10 +47,10 @@ function User() {
     return (<div className="container loading"></div>)
   }
 
-  const jpg = `/img/avatar/${data.id}.jpg`;
-  const webp = `/img/avatar/${data.id}.webp`;
-  const jpgBg = `/img/profile/${data.bg}.jpg`;
-  const webpBg = `/img/profile/${data.bg}.webp`;
+  const jpg = `img/avatar/${data.id}.jpg`;
+  const webp = `img/avatar/${data.id}.webp`;
+  const jpgBg = `img/profile/${data.bg}.jpg`;
+  const webpBg = `img/profile/${data.bg}.webp`;
 
   return (
     <>
@@ -73,7 +73,7 @@ function User() {
 
       <div className="item-list-nav container">
         <form className="search">
-          <svg><use href="/img/sprite.svg#search"></use></svg>
+          <svg><use href="img/sprite.svg#search"></use></svg>
           <input type="text" placeholder="Search item Here" onChange={onChangeSearch} />
         </form>
 
@@ -82,7 +82,7 @@ function User() {
             <option>Recently Listed</option>
             <option>Most Popular</option>
           </select>
-          <svg><use href="/img/sprite.svg#arrow-down"></use></svg>
+          <svg><use href="img/sprite.svg#arrow-down"></use></svg>
         </form>
       </div>
 

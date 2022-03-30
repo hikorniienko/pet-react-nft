@@ -33,7 +33,7 @@ function Bid() {
 
     const searchParams = new URLSearchParams(searchParamsData);
     setLoading(true);
-    axios.get('http://filltext.com/?'+searchParams)
+    axios.get('https://filltext.com/?'+searchParams)
         .then(response => {
           setData(response.data[0]);
           setLikeStatus(response.data[0].likeStatus);
@@ -44,10 +44,10 @@ function Bid() {
   }, []);
 
 
-  const jpg = `/img/product/product_${data.id}.jpg`;
-  const webp = `/img/product/product_${data.id}.webp`;
-  const authorJpg = `/img/avatar/${data.authorId}.jpg`;
-  const authorWebp = `/img/avatar/${data.authorId}.webp`;
+  const jpg = `img/product/product_${data.id}.jpg`;
+  const webp = `img/product/product_${data.id}.webp`;
+  const authorJpg = `img/avatar/${data.authorId}.jpg`;
+  const authorWebp = `img/avatar/${data.authorId}.webp`;
   const authorTo = `/user/${data.authorId}`;
 
   function eventLike(event) {
@@ -57,8 +57,8 @@ function Bid() {
   }
 
   function renderModalBuy() {
-    const jpg = `/img/product/product_${data.id}_small.jpg`;
-    const webp = `/img/product/product_${data.id}_small.webp`;
+    const jpg = `img/product/product_${data.id}_small.jpg`;
+    const webp = `img/product/product_${data.id}_small.webp`;
 
     return (
       <Modal close={closeModalBuy}>
@@ -110,8 +110,8 @@ function Bid() {
   }
 
   function renderModalCheckout() {
-    const jpg = `/img/product/product_${data.id}_small.jpg`;
-    const webp = `/img/product/product_${data.id}_small.webp`;
+    const jpg = `img/product/product_${data.id}_small.jpg`;
+    const webp = `img/product/product_${data.id}_small.webp`;
 
     return (
       <Modal close={closeModalCheckout}>
@@ -135,9 +135,9 @@ function Bid() {
           <div className="successful-social">
             <span>Share</span>
             <ul>
-              <li><Link to="/"><svg><use href="/img/sprite.svg#instagram"></use></svg></Link></li>
-              <li><Link to="/"><svg><use href="/img/sprite.svg#twitter"></use></svg></Link></li>
-              <li><Link to="/"><svg><use href="/img/sprite.svg#telegram"></use></svg></Link></li>
+              <li><Link to="/"><svg><use href="img/sprite.svg#instagram"></use></svg></Link></li>
+              <li><Link to="/"><svg><use href="img/sprite.svg#twitter"></use></svg></Link></li>
+              <li><Link to="/"><svg><use href="img/sprite.svg#telegram"></use></svg></Link></li>
             </ul>
           </div>
         </ModalFooter>
@@ -167,7 +167,7 @@ function Bid() {
           <div className="item__title">
             <h1>{data.title}</h1>
             <div onClick={eventLike} className={likeStatus ? "item__like active" : "item__like"}>
-              <svg><use href="/img/sprite.svg#heart"></use></svg>
+              <svg><use href="img/sprite.svg#heart"></use></svg>
               <span>{likeCount}</span>
             </div>
           </div>

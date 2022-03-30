@@ -7,7 +7,7 @@ function Header() {
     <header className="header">
       <div className="header__inner">
         <Link className="logo"  to="/">
-          <object type="image/svg+xml" data="/img/logo.svg"></object>
+          <object type="image/svg+xml" data="img/logo.svg"></object>
           <span>CryptoNFT</span>
         </Link>
 

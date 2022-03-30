@@ -7,8 +7,8 @@ function Bid(props) {
 
   const key = props.data.title + props.index;
   const to = "/bid/"+ (props.index + 1);
-  const jpg = `/img/product/product_${props.index + 1}_small.jpg`;
-  const webp = `/img/product/product_${props.index + 1}_small.webp`;
+  const jpg = `img/product/product_${props.index + 1}_small.jpg`;
+  const webp = `img/product/product_${props.index + 1}_small.webp`;
 
   function eventLike(event) {
     event.preventDefault();
@@ -31,7 +31,7 @@ function Bid(props) {
           <span>ETH</span>
         </div>
         <div onClick={eventLike} className={likeStatus ? "item-list__like active" : "item-list__like"}>
-          <svg><use href="/img/sprite.svg#heart"></use></svg>
+          <svg><use href="img/sprite.svg#heart"></use></svg>
           <span>{likeCount}</span>
         </div>
       </div>

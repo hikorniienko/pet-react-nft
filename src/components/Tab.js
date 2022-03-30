@@ -37,7 +37,6 @@ export function TabNavList(props) {
           return cloneElement(child, {
             active: i === props.active ? "active" : "",
             index: i,
-            t: "12",
             onClickTabNav: props.onClickTabNav
           })
         })
@@ -52,7 +51,7 @@ export function TabNav(props) {
   }
 
   return (
-    <li key={props.index} className={props.active} onClick={onClickTabNav}>{props.children}</li>
+    <li className={props.active} onClick={onClickTabNav}>{props.children}</li>
   )
 }
 

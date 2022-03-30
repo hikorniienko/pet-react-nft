@@ -21,7 +21,7 @@ function Sellers() {
 
     const searchParams = new URLSearchParams(searchParamsData);
     setLoading(true);
-    axios.get('http://filltext.com/?'+searchParams)
+    axios.get('https://filltext.com/?'+searchParams)
         .then(response => setData(response.data))
         .catch(error => setError(error))
         .finally(() => setLoading(false));
@@ -60,10 +60,10 @@ function Sellers() {
       </Swiper>
       <div className="home-slider__nav">
         <svg className="swiper-button-prev">
-          <use href="/img/sprite.svg#arrow-left"></use>
+          <use href="img/sprite.svg#arrow-left"></use>
         </svg>
         <svg className="swiper-button-next">
-          <use href="/img/sprite.svg#arrow-right"></use>
+          <use href="img/sprite.svg#arrow-right"></use>
         </svg>
       </div>
     </div>

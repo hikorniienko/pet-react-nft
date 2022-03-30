@@ -23,7 +23,7 @@ function Bids() {
 
     const searchParams = new URLSearchParams(searchParamsData);
     setLoading(true);
-    axios.get('http://filltext.com/?'+searchParams)
+    axios.get('https://filltext.com/?'+searchParams)
         .then(response => setData(data.concat(response.data)))
         .catch(error => setError(error))
         .finally(() => setLoading(false));

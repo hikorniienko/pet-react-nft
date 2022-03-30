@@ -1,7 +1,7 @@
 function HeaderSearch() {
   return (
     <form className="search">
-      <svg><use href="/img/sprite.svg#search"></use></svg>
+      <svg><use href="img/sprite.svg#search"></use></svg>
       <input type="text" placeholder="Search item Here" />
     </form>
   );
