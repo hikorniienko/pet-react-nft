@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pet-react-nft/static/css/main.a0d8f4e4.css",
-    "main.js": "/pet-react-nft/static/js/main.50000a0a.js",
-    "static/js/787.2980e299.chunk.js": "/pet-react-nft/static/js/787.2980e299.chunk.js",
-    "index.html": "/pet-react-nft/index.html",
-    "main.a0d8f4e4.css.map": "/pet-react-nft/static/css/main.a0d8f4e4.css.map",
-    "main.50000a0a.js.map": "/pet-react-nft/static/js/main.50000a0a.js.map",
-    "787.2980e299.chunk.js.map": "/pet-react-nft/static/js/787.2980e299.chunk.js.map"
+    "main.css": "/static/css/main.a0d8f4e4.css",
+    "main.js": "/static/js/main.3ce253a5.js",
+    "static/js/787.2980e299.chunk.js": "/static/js/787.2980e299.chunk.js",
+    "index.html": "/index.html",
+    "main.a0d8f4e4.css.map": "/static/css/main.a0d8f4e4.css.map",
+    "main.3ce253a5.js.map": "/static/js/main.3ce253a5.js.map",
+    "787.2980e299.chunk.js.map": "/static/js/787.2980e299.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a0d8f4e4.css",
-    "static/js/main.50000a0a.js"
+    "static/js/main.3ce253a5.js"
   ]
 }
