@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import {Tab, TabNavList, TabNav, TabContentList, TabContent} from "components/Tab";
+import Tab from "components/Tab";
 import {Modal, ModalHeader, ModalContent, ModalFooter} from "components/Modal";
 
 function Bid() {
@@ -149,6 +149,26 @@ function Bid() {
     setModalCheckout(false);
   }
 
+  function tabContent() {
+    const details = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book";
+    const offers = (
+      <ul key="a">
+        <li key={"0"}>Offers 1</li>
+        <li key={"1"}>Offers 2</li>
+        <li key={"2"}>Offers 3</li>
+      </ul>
+    );
+    const history = (
+      <ul key="b">
+        <li key={"3"}>History 1</li>
+        <li key={"4"}>History 2</li>
+        <li key={"5"}>History 3</li>
+      </ul>
+    );
+
+    return [details, offers, history];
+  }
+
   if (loading) {
     return (<div className="container loading"></div>)
   }
@@ -186,33 +206,7 @@ function Bid() {
             </Link>
           </div>
 
-          <Tab className="item-tab">
-            <TabNavList className="item-tab__menu">
-              <TabNav>Details</TabNav>
-              <TabNav>Offers</TabNav>
-              <TabNav>History</TabNav>
-            </TabNavList>
-
-            <TabContentList>
-              <TabContent className="item-tab__content">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
-              </TabContent>
-              <TabContent className="item-tab__content">
-                <ul>
-                  <li>Offers 1</li>
-                  <li>Offers 2</li>
-                  <li>Offers 3</li>
-                </ul>
-              </TabContent>
-              <TabContent className="item-tab__content">
-                <ul>
-                  <li>History 1</li>
-                  <li>History 2</li>
-                  <li>History 3</li>
-                </ul>
-              </TabContent>
-            </TabContentList>
-          </Tab>
+          <Tab className="item-tab" nav={{className: "item-tab__menu", list: ["Details", "Offers", "History"], active: 1}} content={{className: "item-tab__content", content: tabContent()}}/>
 
           <div className="item__button">
             <button className="btn btn--gradient" onClick={()=>{setModalBuy(!modalBuy)}}><span>Buy for {data.amount && data.amount.toFixed(2)} ETH</span></button>

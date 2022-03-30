@@ -1,7 +1,11 @@
-import {Children, cloneElement, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
-export function Tab(props) {
+function Tab(props) {
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+      setActive(props.nav.active);
+  }, [])
 
   function onClickTabNav(key) {
     setActive(key);
@@ -9,72 +13,22 @@ export function Tab(props) {
 
   return (
     <div className={props.className} >
-      {
-        Children.map(props.children, (child) => {
-          if (child.type.name === "TabNavList") {
-            return cloneElement(child, {
-              active: active,
-              onClickTabNav: onClickTabNav
-            })
-          }
-
-          if (child.type.name === "TabContentList") {
-            return cloneElement(child, {
-              active: active
-            })
-          }
-        })
-      }
-    </div>
-  )
-}
-
-export function TabNavList(props) {
-  return (
-    <ul className={props.className}>
-      {
-        Children.map(props.children, (child, i) => {
-          return cloneElement(child, {
-            active: i === props.active ? "active" : "",
-            index: i,
-            onClickTabNav: props.onClickTabNav
+      <ul className={props.nav.className}>
+        {
+          props.nav.list.map((item, index) => {
+            return <li key={index} className={index === active ? "active" : ""} onClick={()=>{setActive(index)}}>{item}</li>
           })
-        })
-      }
-    </ul>
-  )
-}
+        }
+      </ul>
 
-export function TabNav(props) {
-  function onClickTabNav() {
-    props.onClickTabNav(props.index);
-  }
-
-  return (
-    <li className={props.active} onClick={onClickTabNav}>{props.children}</li>
-  )
-}
-
-export function TabContentList(props) {
-  return (
-    <>
-     {
-       Children.map(props.children, (child, i) => {
-         if (i === props.active) {
-            return child;
-         }
-       })
-     }
-    </>
-  )
-}
-
-export function TabContent(props) {
-  return (
-    <div className={props.className}>
-      {props.children}
+      <div className={props.content.className}>
+        {
+          props.content.content.filter((item, index) => index === active)
+        }
+      </div>
     </div>
   )
 }
 
-export default {Tab, TabNavList, TabNav, TabContentList, TabContent};
+
+export default Tab;
