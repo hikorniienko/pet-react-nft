@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/pet-react-nft/static/css/main.a0d8f4e4.css",
-    "main.js": "/pet-react-nft/static/js/main.2423b47d.js",
+    "main.js": "/pet-react-nft/static/js/main.5075b1a6.js",
     "static/js/787.2980e299.chunk.js": "/pet-react-nft/static/js/787.2980e299.chunk.js",
     "index.html": "/pet-react-nft/index.html",
     "main.a0d8f4e4.css.map": "/pet-react-nft/static/css/main.a0d8f4e4.css.map",
-    "main.2423b47d.js.map": "/pet-react-nft/static/js/main.2423b47d.js.map",
+    "main.5075b1a6.js.map": "/pet-react-nft/static/js/main.5075b1a6.js.map",
     "787.2980e299.chunk.js.map": "/pet-react-nft/static/js/787.2980e299.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a0d8f4e4.css",
-    "static/js/main.2423b47d.js"
+    "static/js/main.5075b1a6.js"
   ]
 }
